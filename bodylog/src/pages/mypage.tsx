@@ -12,19 +12,28 @@ function Calender() {
   const prevMonth = () => {
     setCurrentMonth(subMonths(currentMonth, 1));
   };
+
   const nextMonth = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   };
+
   const onDateClick = (day: React.SetStateAction<Date>) => {
     setSelectedDate(day);
   };
+
   return (
-    <div className='calendar'>
+    <StyledCalendar>
       <RenderHeader currentMonth={currentMonth} prevMonth={prevMonth} nextMonth={nextMonth} />
       <RenderDays />
       <RenderCells currentMonth={currentMonth} selectedDate={selectedDate} onDateClick={onDateClick} />
-    </div>
+    </StyledCalendar>
   );
 }
 
 export default Calender;
+
+const StyledCalendar = styled.div`
+  width: 60%;
+  height: 90%;
+  display: flex;
+`;
